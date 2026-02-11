@@ -1,0 +1,6 @@
+@GelirGiderTakip.API_HostAddress = http://localhost:5203
+
+GET {{GelirGiderTakip.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

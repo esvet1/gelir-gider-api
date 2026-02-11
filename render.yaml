@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: gelir-gider-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: ConnectionStrings__DefaultConnection
+        sync: false
+      - key: JwtSettings__SecretKey
+        sync: false
+      - key: JwtSettings__Issuer
+        value: GelirGiderAPI
+      - key: JwtSettings__Audience
+        value: GelirGiderClient
+      - key: JwtSettings__ExpirationMinutes
+        value: "1440"
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
