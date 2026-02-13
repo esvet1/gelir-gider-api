@@ -35,8 +35,7 @@ namespace GelirGiderTakip.API.Controllers
             
             var query = _context.Transactions
                 .Include(t => t.Account)
-                .Include(t => t.Category)
-                .Where(t => t.UserId == userId);
+                .Include(t => t.Category);
 
             if (type.HasValue)
             {
@@ -79,7 +78,7 @@ namespace GelirGiderTakip.API.Controllers
             var transaction = await _context.Transactions
                 .Include(t => t.Account)
                 .Include(t => t.Category)
-                .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId);
+                .FirstOrDefaultAsync(t => t.Id == id);
 
             if (transaction == null)
             {
@@ -177,7 +176,7 @@ namespace GelirGiderTakip.API.Controllers
 
             var transaction = await _context.Transactions
                 .Include(t => t.Account)
-                .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId);
+                .FirstOrDefaultAsync(t => t.Id == id);
 
             if (transaction == null)
             {
@@ -232,7 +231,7 @@ namespace GelirGiderTakip.API.Controllers
 
             var transaction = await _context.Transactions
                 .Include(t => t.Account)
-                .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId);
+                .FirstOrDefaultAsync(t => t.Id == id);
 
             if (transaction == null)
             {
@@ -270,8 +269,7 @@ namespace GelirGiderTakip.API.Controllers
             var targetDate = new DateTime(year ?? DateTime.Now.Year, month ?? DateTime.Now.Month, 1);
 
             var transactions = await _context.Transactions
-                .Where(t => t.UserId == userId &&
-                           t.TransactionDate.Year == targetDate.Year &&
+                .Where(t => t.TransactionDate.Year == targetDate.Year &&
                            t.TransactionDate.Month == targetDate.Month)
                 .ToListAsync();
 

@@ -34,7 +34,6 @@ namespace GelirGiderTakip.API.Controllers
             IQueryable<Transfer> query = _context.Transfers
                 .Include(t => t.FromAccount)
                 .Include(t => t.ToAccount)
-                .Where(t => t.UserId == userId)
                 .OrderByDescending(t => t.TransferDate);
 
             if (limit.HasValue)
@@ -69,7 +68,7 @@ namespace GelirGiderTakip.API.Controllers
             var transfer = await _context.Transfers
                 .Include(t => t.FromAccount)
                 .Include(t => t.ToAccount)
-                .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId);
+                .FirstOrDefaultAsync(t => t.Id == id);
 
             if (transfer == null)
             {
@@ -166,7 +165,7 @@ namespace GelirGiderTakip.API.Controllers
             var transfer = await _context.Transfers
                 .Include(t => t.FromAccount)
                 .Include(t => t.ToAccount)
-                .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId);
+                .FirstOrDefaultAsync(t => t.Id == id);
 
             if (transfer == null)
             {
@@ -206,7 +205,7 @@ namespace GelirGiderTakip.API.Controllers
             var transfer = await _context.Transfers
                 .Include(t => t.FromAccount)
                 .Include(t => t.ToAccount)
-                .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId);
+                .FirstOrDefaultAsync(t => t.Id == id);
 
             if (transfer == null)
             {

@@ -32,8 +32,7 @@ namespace GelirGiderTakip.API.Controllers
             var userId = GetCurrentUserId();
             
             var accounts = await _context.Accounts
-                .Where(a => a.UserId == userId)
-                .ToListAsync();
+                               .ToListAsync();
 
             return Ok(accounts.Select(a => new AccountDto
             {
@@ -54,7 +53,7 @@ namespace GelirGiderTakip.API.Controllers
             var userId = GetCurrentUserId();
             
             var account = await _context.Accounts
-                .FirstOrDefaultAsync(a => a.Id == id && a.UserId == userId);
+                .FirstOrDefaultAsync(a => a.Id == id);
 
             if (account == null)
             {
@@ -120,7 +119,7 @@ namespace GelirGiderTakip.API.Controllers
             var userId = GetCurrentUserId();
 
             var account = await _context.Accounts
-                .FirstOrDefaultAsync(a => a.Id == id && a.UserId == userId);
+                .FirstOrDefaultAsync(a => a.Id == id);
 
             if (account == null)
             {
